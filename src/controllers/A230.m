@@ -74,7 +74,7 @@ classdef A230 < handle
             surf([-self.S, self.S; -self.S, self.S], ...
                 [self.S, self.S; self.S, self.S], [self.S, self.S; 0, 0], ...
                 'CData', imread('IMG_7413.jpg'), 'FaceColor', 'texturemap');
-            PlaceObject('environment.PLY',[0,0,0]);
+            PlaceObject('environment.ply',[0,0,0]);
             light("Style","local","Position",[-10 -10 3]);
             % ellipsoid(self.c(1),self.c(2),self.c(3),self.r(1),self.r(2),self.r(3));
         end
@@ -366,10 +366,10 @@ classdef A230 < handle
 
             hflange = cell(1, size(startPositions, 1));
             for i = 1:size(startPositions, 1)
-                hflange{i} = PlaceObject('flange.ply', startPositions(i, :));
+                hflange{i} = PlaceObject('flange.PLY', startPositions(i, :));
             end
 
-            flangeOrigin = PlaceObject('flange0.ply', [0, 0, 0]);
+            flangeOrigin = PlaceObject('flange0.PLY', [0, 0, 0]);
             vertices = get(flangeOrigin, 'Vertices');
             delete(flangeOrigin);
 
@@ -412,7 +412,7 @@ classdef A230 < handle
                     pause(0.05);
                 end
                 delete(hflange{i});
-                PlaceObject('flange.ply', endPositions(i, :));
+                PlaceObject('flange.PLY', endPositions(i, :));
             end
         end
 

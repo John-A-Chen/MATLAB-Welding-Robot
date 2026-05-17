@@ -50,7 +50,7 @@ classdef A2J2 < handle
             surf([-self.Size, self.Size; -self.Size, self.Size], ...
                 [self.Size, self.Size; self.Size, self.Size], [self.Size, self.Size; 0, 0], ...
                 'CData', imread('IMG_7413.jpg'), 'FaceColor', 'texturemap');
-            PlaceObject('environment.PLY',[0,0,0]);
+            PlaceObject('environment.ply',[0,0,0]);
             light("Style","local","Position",[-10 -10 3]);
         end
 

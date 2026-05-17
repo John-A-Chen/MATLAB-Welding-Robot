@@ -2,8 +2,7 @@
 
 A dual-robot industrial welding simulation archive built in MATLAB for **41013 Industrial Robotics**, then reused for **41014 Sensors and Controls for Mechatronic Systems**.
 
-Repository (current/legacy name): `AT2ChrisGuyJohn`  
-Planned display name: **MATLAB Welding Robot**
+Repository name: **MATLAB-Welding-Robot**
 
 ## What this project demonstrates
 
@@ -59,9 +58,21 @@ This repository assumes a MATLAB robotics teaching environment. Typical requirem
 
 If your environment is missing any helper classes from the course/lab template, see `docs/dependencies-and-setup.md`.
 
-## Repository Layout (Current)
+## Repository Layout
 
-This archive intentionally preserves the original flat script layout for compatibility with old coursework environments. A cleaned structure and migration plan is documented here:
+The repository is now grouped by purpose:
+
+- `src/controllers/` - canonical orchestrator classes (`A2`, `A230`, `A2J2`)
+- `src/models/` - robot model class definitions and model scripts
+- `src/experiments/` - RMRC and visual-servoing experiments
+- `src/utils/` - helper scripts and utility entrypoints
+- `assets/meshes/` - all PLY geometry files
+- `assets/textures/` - environment texture images
+- `assets/photos/` - project photos
+- `archive/legacy-scripts/` - retained non-canonical historical scripts
+- `archive/autosave/` - `.asv` autosave files
+
+Reference docs:
 
 - `docs/repo-structure-plan.md`
 - `docs/source-code-map.md`

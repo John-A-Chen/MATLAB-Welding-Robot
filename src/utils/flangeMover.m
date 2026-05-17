@@ -5,10 +5,10 @@ endPositions = [2,-2, 1];
 
 hflange  = cell(1, size(startPositions, 1));
 for i = 1:size(startPositions, 1)
-    hflange{i} = PlaceObject('flange.ply', startPositions(i, :));
+    hflange{i} = PlaceObject('flange.PLY', startPositions(i, :));
 end
 
-flangeOrigin = PlaceObject('flange0.ply', [0,0,0]);
+flangeOrigin = PlaceObject('flange0.PLY', [0,0,0]);
 vertices = get(flangeOrigin, 'Vertices');
 delete(flangeOrigin);
 
@@ -40,6 +40,6 @@ for i = 1:size(startPositions, 1)
         pause(0.05);
     end
     delete(hflange{i});
-    PlaceObject('flange.ply', endPositions(i, :));
+    PlaceObject('flange.PLY', endPositions(i, :));
 end
 end

@@ -1,6 +1,7 @@
 function bootstrap_paths()
 % bootstrap_paths Adds active project folders to the MATLAB path.
-repoRoot = fileparts(mfilename('fullpath'));
+utilsDir = fileparts(mfilename('fullpath'));
+repoRoot = fileparts(fileparts(utilsDir));
 
 activeDirs = {
     repoRoot

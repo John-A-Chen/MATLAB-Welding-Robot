@@ -1,13 +1,8 @@
 # Repository Structure Plan
 
-This repository currently preserves a flat legacy layout for compatibility with existing scripts.
+This document records the implemented repository cleanup for MATLAB Welding Robot.
 
-## Current state
-
-- Root contains canonical scripts, model definitions, experiments, autosaves, media textures, and PLY meshes.
-- This reflects how the coursework evolved over time.
-
-## Target structure (non-breaking migration path)
+## Implemented structure
 
 ```text
 MATLAB-Welding-Robot/
@@ -15,12 +10,15 @@ MATLAB-Welding-Robot/
   bootstrap_paths.m
   start_welding_demo.m
   docs/
+    dependencies-and-setup.md
+    source-code-map.md
+    video-notes.md
+    repo-structure-plan.md
   src/
     controllers/
     models/
-    collision/
-    ui/
-  experiments/
+    experiments/
+    utils/
   assets/
     meshes/
     textures/
@@ -28,16 +26,31 @@ MATLAB-Welding-Robot/
   archive/
     autosave/
     legacy-scripts/
+  scripts/
 ```
 
-## Migration strategy
+## What was sorted
 
-1. Keep current files in root while docs are introduced.
-2. Identify canonical files (`A2`, `A230`, `A2J2`, robot models).
-3. Move only duplicate/legacy scripts into `archive/` after entrypoint tests pass.
-4. Update file path references for `PlaceObject` and textures before moving PLY/JPG assets.
-5. Add regression checklist for demo modes after each move.
+- Canonical controllers moved to `src/controllers/`
+- Model classes/scripts moved to `src/models/`
+- RMRC and sensing experiments moved to `src/experiments/`
+- Utility scripts moved to `src/utils/`
+- All PLY assets moved to `assets/meshes/`
+- Environment textures moved to `assets/textures/`
+- Project photos moved to `assets/photos/`
+- Autosaves moved to `archive/autosave/`
+- Legacy/duplicate scripts moved to `archive/legacy-scripts/`
 
-## Why not move everything immediately?
+## Compatibility notes
 
-Many scripts reference relative files directly. A hard move in one pass risks breaking the assessed demo flows. This staged plan keeps the repo runnable while it gets cleaned up.
+- Root launchers are retained for convenience:
+  - `bootstrap_paths.m`
+  - `start_welding_demo.m`
+- `bootstrap_paths` intentionally excludes `archive/` folders from active path loading.
+- Canonical controllers were patched for mesh filename case consistency (`environment.ply`, `flange.PLY`, `flange0.PLY`).
+
+## Recommended usage
+
+1. Run `bootstrap_paths`
+2. Run `start_welding_demo('A2')`
+3. Use `A230` / `A2J2` only when testing variant behavior
